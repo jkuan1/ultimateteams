@@ -8,7 +8,7 @@ visit localhost:5000 to see the message!
 const http = require('http');
 
 const hostname = '127.0.0.1';
-const port = 5000;
+const port = 5069;
 
 const server = http.createServer((req,res) => {
     res.statusCOde = 200;
@@ -17,5 +17,5 @@ const server = http.createServer((req,res) => {
 });
 
 server.listen(port, hostname, () => {
-    console.log('Server running at http://${hostname}:${port}/');
+    console.log(`Server running at http://${hostname}:${port}/`);
 });
