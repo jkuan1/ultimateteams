@@ -6,6 +6,10 @@
  * @flow strict-local
  */
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './components/HomeScreen/HomeScreen.js'
+
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,9 +28,51 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Calendar" component={CalendarScreen} />
+      <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
+
+function AccountScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>My Account</Text>
+    </View>
+  );
+}
+
+function CalendarScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Calendar</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Here are your settings!</Text>
+    </View>
+  );
+}
+
 const App: () => React$Node = () => {
   return (
     <>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+    </>
+    /*<>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -69,6 +115,7 @@ const App: () => React$Node = () => {
         </ScrollView>
       </SafeAreaView>
     </>
+  */
   );
 };
 
