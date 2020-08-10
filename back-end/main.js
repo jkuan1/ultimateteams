@@ -1,28 +1,27 @@
 /* This is the Main Page
 Currently, it only takes you to the sample.js when a get request is
-nade for that */
-const http = require('http');
+made for that 
+*/
 
-const hostname = '127.0.0.1';
+const express = require('express')
+const app = express()
 const port = 5000;
+const test_login = '/testlogin'
 
-var express = require('express')
-var app = express()
+//The following line will get the function from testlogin.js
+const msg = require('./testlogin.js');
 
+//This block here will open the main page and display: 'This is the Main Page'
+app.get('/', (req, res) => {
+    res.send('This is the Main Page');
+})
 
-//This part creates the server and displays the date and time
-const server = http.createServer((req,res) => {
-    res.statusCOde = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end(Date());
-});
+//This block opens up url/testlogin and displays 'Test login succesful!'
+app.get(test_login, (req, res) =>{
+    res.send(msg());
+})
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.listen(port, () =>{
+    console.log(`Example app listening on port ${port}`);
+})
 
-//This is the part that I think makes url/sample take me to sample.js
-app.get('/sample', function (req, res) {
-    res.send('Getting sample code');
-    res.redirect('/sample.js');
-  })
