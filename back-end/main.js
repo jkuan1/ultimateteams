@@ -9,7 +9,7 @@ const port = 5000;
 const test_login = '/testlogin'
 
 //The following line will get the function from testlogin.js
-const msg = require('./testlogin.js');
+const test = require('./testlogin.js');
 
 //This block here will open the main page and display: 'This is the Main Page'
 app.get('/', (req, res) => {
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 //This block opens up url/testlogin and displays 'Test login succesful!'
 app.get(test_login, (req, res) =>{
-    res.send(msg());
+    res.send(test());
 })
 
 app.listen(port, () =>{
