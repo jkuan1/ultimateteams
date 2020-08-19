@@ -8,7 +8,31 @@ import {
 import fonts from '../../styles/fonts';
 import colors from '../../styles/colors';
 
-function HomeScreen() {
+const url = 'https://canada-holidays.ca/api/v1/provinces/BC';
+
+export default class HomeScreen extends React.Component {
+  state = {
+    name: [],
+    date: []
+  }
+
+  componentDidMount() {
+    fetch(url)
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ name: data.province.nextHoliday.nameEn})
+    })
+    .catch(console.log("Could not fetch name"))
+
+    this.getDate();
+  }
+
+  getDate = () => {
+    var date = new Date().toDateString();
+    this.setState({ date });
+  };
+
+  render() {
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -16,26 +40,28 @@ function HomeScreen() {
           style={styles.bgImage}
           resizeMode="cover"
         >
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Welcome, Sonny</Text>
-        </View>
-        <View style={styles.section}>
-          <Text color="#19e7f7" size={15}>
-            Sunday, June 21, 2020
-          </Text>
-          <Text size={30} bold white style={styles.title}>
-            University Hill Hawks
-          </Text>
-        </View>
-        <View style={[styles.section, styles.sectionLarge]}>
-          <Text color="#19e7f7" hCenter size={15} style={styles.description}>
-            {' '}
-            Practice is at 3:30 today on the south fields, make sure to bring water and cleats
-          </Text>
-        </View>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Welcome, {this.state.name}</Text>          
+          </View>
+          
+            <View style={styles.section}>
+            <Text color="#19e7f7" size={15}>
+              {this.state.date}
+            </Text>
+            <Text size={30} bold white style={styles.title}>
+              University Hill Hawks
+            </Text>
+          </View>
+          <View style={[styles.section, styles.sectionLarge]}>
+            <Text color="#19e7f7" hCenter size={15} style={styles.description}>
+              {' '}
+              Practice is at 3:30 today on the south fields, make sure to bring water and cleats
+            </Text>
+          </View>
         </ImageBackground>
       </View>
-    );
+      );
+    }
   }
 
   const styles = StyleSheet.create({
@@ -85,5 +111,3 @@ function HomeScreen() {
       borderBottomColor: colors.primary,
     },
   });
-
-  export default HomeScreen;
