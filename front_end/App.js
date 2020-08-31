@@ -6,9 +6,15 @@
  * @flow strict-local
  */
 
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from './components/HomeScreen/HomeScreen.js'
+import HomeScreen from './components/Home/HomeScreen.js'
+import AccountScreen from './components/Account/AccountScreen.js'
+import CalendarScreen from './components/Calendar/CalendarScreen.js'
+import SettingsScreen from './components/Settings/SettingsScreen.js'
+import AccountSettingsScreen from './components/Settings/AccountSettingsScreen.js'
+import NotificationsPrivacyScreen from './components/Settings/NotificationsPrivacyScreen.js'
 
 import React from 'react';
 import {
@@ -30,38 +36,26 @@ import {
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+function BottomTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
       <Tab.Screen name="Account" component={AccountScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Settings" component={SettingsStack} />
     </Tab.Navigator>
   );
 }
 
-function AccountScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>My Account</Text>
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
-function CalendarScreen() {
+function SettingsStack() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Calendar</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Here are your settings!</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
+      <Stack.Screen name="Notifications and Privacy" component={NotificationsPrivacyScreen} />
+    </Stack.Navigator>
   );
 }
 
@@ -69,7 +63,7 @@ const App: () => React$Node = () => {
   return (
     <>
       <NavigationContainer>
-        <MyTabs />
+        <BottomTabs />
       </NavigationContainer>
     </>
     /*<>

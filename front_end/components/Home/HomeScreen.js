@@ -41,11 +41,11 @@ export default class HomeScreen extends React.Component {
           resizeMode="cover"
         >
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Welcome, {this.state.name}</Text>          
+            <Text >Welcome, {this.state.name}</Text>          
           </View>
           
             <View style={styles.section}>
-            <Text color="#19e7f7" size={15}>
+            <Text color="19e7f7" size={15}>
               {this.state.date}
             </Text>
             <Text size={30} bold white style={styles.title}>
