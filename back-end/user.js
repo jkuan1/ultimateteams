@@ -8,7 +8,7 @@ const express = require('express')
 const app = express()
 
 //Line to export the functions in here
-module.exports = nut;
+module.exports = test2;
 
 /*
 Stuff it will have in it:
@@ -23,6 +23,6 @@ PhoneNumber
 var text = {"firstName":"John", "lastName":"Doe"}
 var obj = JSON.parse(text);
 
-function nut(){
+function test2(){
     return obj;
 }

@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/nuton', (req, res) => {
+app.get('/example', (req, res) => {
     //const firstName = req.query.firstName;
     res.json({
         UserName: 'Ryan Lin',
