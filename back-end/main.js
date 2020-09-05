@@ -7,10 +7,16 @@ made for that
 const express = require('express')
 const app = express()
 const port = 5000;
-const test_login = '/testlogin'
+const login = '/login'
+const test_user = {
+    UserName: 'Ryan Lin',
+    Password: 'Password',
+    Birthday: 'January 14, 1999',
+    Email: 'lin.ryan99@hotmail.com',
+    PhoneNumber: '604-446-6883'};
 
 //The following line will get the function from testlogin.js
-const test = require('./testlogin.js');
+const test = require('./login.js');
 
 //This block here will open the main page and display: 'This is the Main Page'
 app.get('/', (req, res) => {
@@ -18,18 +24,12 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/nuton', (req, res) => {
+app.get('/user', (req, res) => {
     //const firstName = req.query.firstName;
-    res.json({
-        UserName: 'Ryan Lin',
-        Password: 'Password',
-        Birthday: 'January 14, 1999',
-        Email: 'lin.ryan99@hotmail.com',
-        PhoneNumber: '604-446-6883'});
-})
+    res.json(test_user)
 
 //This block opens up url/testlogin and displays 'Test login succesful!'
-app.get(test_login, (req, res) =>{
+app.get(login, (req, res) =>{
     res.send(test());
 })
 
