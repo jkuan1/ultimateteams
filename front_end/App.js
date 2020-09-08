@@ -6,6 +6,27 @@ export default class App extends React.Component {
     email:"",
     password:""
   }
+
+  submit(){
+    let collection = {}
+    collection.name=this.state.email,
+    collection.email=this.state.password
+    console.warn(collection);
+
+    var url = 'ultiApp_url';
+
+    fetch(url,{
+      method: 'POST',
+      body: JSON.stringify(collection),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:',error))
+    .then(response => console.log('Success:',response))
+  }
+
   render(){
     return (
       <View style={styles.container}>
@@ -26,7 +47,7 @@ export default class App extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn} onPress={this.submit()} >
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity>
