@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
 app.get('/example', (req, res) => {
     //const firstName = req.query.firstName;
     res.json({
-        UserName: 'Ryan Lin',
+        UserName: 'John Smith',
         Password: 'Password',
-        Birthday: 'January 14, 1999',
-        Email: 'lin.ryan99@hotmail.com',
-        PhoneNumber: '604-446-6883'});
+        Birthday: 'January 01, 2000',
+        Email: 'johnsmith@gmail.com',
+        PhoneNumber: '604-444-4444'});
 })
 
 //This block opens up url/testlogin and displays 'Test login succesful!'

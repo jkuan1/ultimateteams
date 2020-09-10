@@ -3,6 +3,8 @@ This is the user setting page. I want to return a json object here with
 the user's data
 */
 
+//CURRENTLY THIS FILE DOES NOTHING
+
 //The constant variables we'll need
 const express = require('express')
 const app = express()
@@ -23,6 +25,6 @@ PhoneNumber
 var text = {"firstName":"John", "lastName":"Doe"}
 var obj = JSON.parse(text);
 
-function test2(){
+function test2() {
     return obj;
 }
