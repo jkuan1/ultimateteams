@@ -14,7 +14,7 @@ const test = require('./testlogin.js');
 
 //This block here will open the main page and display: 'This is the Main Page'
 app.get('/', (req, res) => {
-    res.send('This is the Main Page');
+    res.send('Hello World, from Ultimate Teams');
 
 })
 
@@ -35,5 +35,5 @@ app.get(test_login, (req, res) =>{
 
 
 app.listen(port, () =>{
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Ultimate Teams server listening on port ${port}`);
 })
