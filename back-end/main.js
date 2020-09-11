@@ -27,12 +27,17 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
     //const firstName = req.query.firstName;
     res.json(test_user)
+})
 
 //This block opens up url/testlogin and displays 'Test login succesful!'
 app.get(login, (req, res) =>{
-    res.send(test());
-})
+    // Unsure where my get request from front end is coming from.
+    // const username = req.get(...)
+    // const password = req.get(...)
 
+    var login_response = login_function(username, password)
+    res.send(login_response) // String for now + staus code
+})
 
 app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`);
